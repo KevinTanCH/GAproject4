@@ -3,8 +3,12 @@ package com.Booth.Booth.mapper;
 import com.Booth.Booth.dto.BuyerDto;
 import com.Booth.Booth.entity.Buyer;
 
+// Mapper class to map entity.Buyer to BuyerDto
+// And to map BuyerDto to entity.Buyer
+
 public class BuyerMapper {
 
+    // Get Buyer entity and set it to BuyerDto
     public static BuyerDto mapToBuyerDto(Buyer buyer){
         return new BuyerDto(
                 buyer.getId(),
@@ -17,7 +21,10 @@ public class BuyerMapper {
                 // Lombok getters
         );
 
-    }public static Buyer mapToBuyer(BuyerDto buyerDto){
+    }
+
+    // Map get buyerDto to buyer entity
+    public static Buyer mapToBuyer(BuyerDto buyerDto){
         return new Buyer(
                 buyerDto.getId(),
                 buyerDto.getUsername(),
