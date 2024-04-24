@@ -45,5 +45,12 @@ public class BuyerController {
         return ResponseEntity.ok(buyerDto);
     }
 
+    // Delete Buyer REST API
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteBuyer(@PathVariable("id") Long buyerId){
+        buyerService.deleteBuyer(buyerId);
+        return ResponseEntity.ok("Buyer deleted(set to inactive)");
+    }
+
 
 }

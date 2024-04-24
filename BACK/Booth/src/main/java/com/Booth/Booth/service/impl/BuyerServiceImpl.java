@@ -61,4 +61,14 @@ public class BuyerServiceImpl implements BuyerService {
 
         return BuyerMapper.mapToBuyerDto(updatedBuyerObj);
     }
+
+    @Override
+    public void deleteBuyer(Long buyerId) {
+
+        Buyer buyer = buyerRepository.findById(buyerId).orElseThrow(
+                ()-> new ResourceNotFoundException(("Buyer not found" + buyerId))
+        );
+
+        buyerRepository.deleteById(buyerId);
+    }
 }
