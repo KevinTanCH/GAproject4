@@ -11,4 +11,6 @@ public interface BuyerService {
     BuyerDto getBuyerById(Long buyerId);
 
     List<BuyerDto> getAllBuyers();
+
+    BuyerDto updateBuyer(Long buyerId, BuyerDto updatedBuyer);
 }

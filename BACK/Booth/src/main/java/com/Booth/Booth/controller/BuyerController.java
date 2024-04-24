@@ -3,6 +3,7 @@ package com.Booth.Booth.controller;
 import com.Booth.Booth.dto.BuyerDto;
 import com.Booth.Booth.service.BuyerService;
 import lombok.AllArgsConstructor;
+import org.hibernate.boot.jaxb.internal.stax.BufferedXMLEventReader;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +36,13 @@ public class BuyerController {
     public ResponseEntity<List<BuyerDto>> getAllBuyers(){
         List<BuyerDto> buyers = buyerService.getAllBuyers();
         return ResponseEntity.ok(buyers);
+    }
+
+    // Patch Buyer REST API
+    @PatchMapping("{id}")
+    public ResponseEntity<BuyerDto> updateBuyer(@PathVariable("id") Long buyerId, @RequestBody BuyerDto updatedBuyer){
+        BuyerDto buyerDto = buyerService.updateBuyer(buyerId, updatedBuyer);
+        return ResponseEntity.ok(buyerDto);
     }
 
 

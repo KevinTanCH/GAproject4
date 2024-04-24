@@ -42,4 +42,23 @@ public class BuyerServiceImpl implements BuyerService {
         List<Buyer> buyers = buyerRepository.findAll();
         return buyers.stream().map((buyer)-> BuyerMapper.mapToBuyerDto(buyer)).collect(Collectors.toList());
     }
+
+    @Override
+    public BuyerDto updateBuyer(Long buyerId, BuyerDto updatedBuyer) {
+
+        Buyer buyer = buyerRepository.findById(buyerId).orElseThrow(
+                ()-> new ResourceNotFoundException(("Buyer not found" + buyerId))
+        );
+
+        buyer.setUsername(updatedBuyer.getUsername());
+        buyer.setEmail(updatedBuyer.getEmail());
+        buyer.setPassword(updatedBuyer.getPassword());
+        buyer.setPhoto(updatedBuyer.getPhoto());
+        buyer.setLocation(updatedBuyer.getLocation());
+        buyer.setIsActive(updatedBuyer.getIsActive());
+
+        Buyer updatedBuyerObj = buyerRepository.save(buyer);
+
+        return BuyerMapper.mapToBuyerDto(updatedBuyerObj);
+    }
 }

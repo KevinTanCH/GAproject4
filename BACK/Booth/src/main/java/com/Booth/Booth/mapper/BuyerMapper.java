@@ -14,6 +14,7 @@ public class BuyerMapper {
                 buyer.getPhoto(),
                 buyer.getLocation(),
                 buyer.getIsActive()
+                // Lombok getters
         );
 
     }public static Buyer mapToBuyer(BuyerDto buyerDto){
@@ -25,6 +26,7 @@ public class BuyerMapper {
                 buyerDto.getPhoto(),
                 buyerDto.getLocation(),
                 buyerDto.getIsActive()
+                // Lombok getters
         );
     }
 
