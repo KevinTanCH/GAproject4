@@ -4,4 +4,6 @@ import com.Booth.Booth.dto.BuyerDto;
 
 public interface BuyerService {
     BuyerDto createBuyer(BuyerDto buyerDto);
+
+    BuyerDto getBuyerById(Long buyerId);
 }

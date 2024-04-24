@@ -14,11 +14,18 @@ public class BuyerController {
 
     private BuyerService buyerService;
 
-    // Build Add Buyer REST API
+    // Add Buyer REST API
     @PutMapping
     public ResponseEntity<BuyerDto> createBuyer(@RequestBody BuyerDto buyerDto){
         BuyerDto saveBuyer = buyerService.createBuyer(buyerDto);
         return new ResponseEntity<>(saveBuyer, HttpStatus.CREATED);
+    }
+
+    // Get Buyer REST API
+    @PostMapping("{id}")
+    public ResponseEntity<BuyerDto> getBuyer(@PathVariable("id") Long buyerId){
+        BuyerDto buyerDto = buyerService.getBuyerById(buyerId);
+        return ResponseEntity.ok(buyerDto);
     }
 
 
