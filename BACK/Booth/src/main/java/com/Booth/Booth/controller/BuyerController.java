@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/buyers")
@@ -21,11 +23,18 @@ public class BuyerController {
         return new ResponseEntity<>(saveBuyer, HttpStatus.CREATED);
     }
 
-    // Get Buyer REST API
+    // Post 1 Buyer REST API
     @PostMapping("{id}")
-    public ResponseEntity<BuyerDto> getBuyer(@PathVariable("id") Long buyerId){
+    public ResponseEntity<BuyerDto> post1Buyer(@PathVariable("id") Long buyerId){
         BuyerDto buyerDto = buyerService.getBuyerById(buyerId);
         return ResponseEntity.ok(buyerDto);
+    }
+
+    // Get all Buyers REST API
+    @GetMapping
+    public ResponseEntity<List<BuyerDto>> getAllBuyers(){
+        List<BuyerDto> buyers = buyerService.getAllBuyers();
+        return ResponseEntity.ok(buyers);
     }
 
 

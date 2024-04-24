@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.nio.file.ReadOnlyFileSystemException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 // @Service tells spring container to create spring bean
 @Service
@@ -33,5 +35,11 @@ public class BuyerServiceImpl implements BuyerService {
                 .orElseThrow(() -> new ResourceNotFoundException("Buyer not found: " + buyerId));
 
         return BuyerMapper.mapToBuyerDto(buyer);
+    }
+
+    @Override
+    public List<BuyerDto> getAllBuyers() {
+        List<Buyer> buyers = buyerRepository.findAll();
+        return buyers.stream().map((buyer)-> BuyerMapper.mapToBuyerDto(buyer)).collect(Collectors.toList());
     }
 }
