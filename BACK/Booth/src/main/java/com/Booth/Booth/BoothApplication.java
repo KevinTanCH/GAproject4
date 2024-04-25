@@ -8,6 +8,8 @@ public class BoothApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BoothApplication.class, args);
+
+		System.out.println("Booth Backend Running");
 	}
 
 }
