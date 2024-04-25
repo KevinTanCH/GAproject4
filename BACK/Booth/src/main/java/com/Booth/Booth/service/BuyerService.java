@@ -9,21 +9,23 @@ import java.util.List;
 // Controller layer depends on service layer
 
 public interface BuyerService {
-    // Put method
+    // Put method returns an object of BuyerDto class.
     BuyerDto createBuyer(BuyerDto buyerDto);
 
-    // Actually a post method
+    // Actually a post method since single item, returns an object of BuyerDto class.
     BuyerDto getBuyerById(Long buyerId);
 
-    // Get all, return type is a list
+    // Get all, return type is a list of objects of BuyerDto class.
     List<BuyerDto> getAllBuyers();
 
-    // Patch
+    // Patch, return type is an object of BuyerDto class.
     BuyerDto updateBuyer(Long buyerId, BuyerDto updatedBuyer);
 
-    // Delete
+    // Delete, returns nothing
     void deleteBuyer(Long buyerId);
 
-
-
 }
+// Data abstraction is the process of hiding certain details and showing only essential information to the user.
+// An interface is a completely "abstract class" that is used to group related methods with empty bodies
+// This interface has new methods declared.
+// Bodies of these methods are in the implementation class file.

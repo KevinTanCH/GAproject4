@@ -6,7 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-// Lombok to auto add getter and setters
+// Lombok autofill getter and setters
+// Lombok autofill constructors so no need to write constructor method.
 // @Entity annotation to make Buyer a JP entity
 // And to specify the class as a Jp entity
 // @Table to specify SQL table and details
@@ -35,6 +36,8 @@ public class Buyer {
     private String photo;
     private String location;
     private Boolean isActive;
+    // These are attributes of Buyer class.
+    // Private because should only be used in this class.
     // Be sure to align with dto.BuyerDto
 
 

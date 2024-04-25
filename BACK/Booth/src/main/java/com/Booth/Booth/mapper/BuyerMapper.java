@@ -18,7 +18,7 @@ public class BuyerMapper {
                 buyer.getPhoto(),
                 buyer.getLocation(),
                 buyer.getIsActive()
-                // Lombok getters
+                // From Lombok getters
         );
 
     }
@@ -33,7 +33,7 @@ public class BuyerMapper {
                 buyerDto.getPhoto(),
                 buyerDto.getLocation(),
                 buyerDto.getIsActive()
-                // Lombok getters
+                // From Lombok getters
         );
     }
 
