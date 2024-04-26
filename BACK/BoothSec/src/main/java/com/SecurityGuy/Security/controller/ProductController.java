@@ -2,9 +2,13 @@ package com.SecurityGuy.Security.controller;
 
 
 import com.SecurityGuy.Security.Service.ProductService;
+import com.SecurityGuy.Security.entity.FrontEndPut1Product;
 import com.SecurityGuy.Security.entity.Product;
-import com.SecurityGuy.Security.entity.RequestBodyFrontEnd;
+import com.SecurityGuy.Security.entity.FrontEndPost1Product;
+import com.SecurityGuy.Security.entity.User;
 import com.SecurityGuy.Security.repository.ProductRepository;
+import com.SecurityGuy.Security.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +29,9 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @GetMapping
     public ResponseEntity<List<Product>> getProduct(){
         List<Product> allProduct = productRepository.findAll();
@@ -33,7 +40,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<?> post1Product(@RequestBody RequestBodyFrontEnd requestBody){
+    public ResponseEntity<?> post1Product(@RequestBody FrontEndPost1Product requestBody){
         // Get product by Id using a get function.
         Optional<Product> product = productRepository.findById(requestBody.getProductId());
         if (product.isPresent()) {
@@ -45,10 +52,18 @@ public class ProductController {
 
     //@valid to validation
     @PutMapping
-    public ResponseEntity<Product> createProduct(@RequestBody @Valid Product product){
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(
-                productRepository.save(product)
-        );
+    public ResponseEntity<?> createProduct(@RequestBody @Valid FrontEndPut1Product requestBody){
+        try{
+            Product createdProduct = productService.createProduct(requestBody);
+            return ResponseEntity.ok(createdProduct);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+//        User user = userRepository.findById(userId).
+//                orElseThrow(() -> new EntityNotFoundException("Error getting seller ID"));
+//        product.setUser(user);
+//        return ResponseEntity.status(HttpStatus.CREATED).body(
+//                productRepository.save(product)
+//        );
     }
 }
