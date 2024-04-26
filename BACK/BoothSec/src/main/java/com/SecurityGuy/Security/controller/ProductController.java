@@ -22,6 +22,7 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
     private ProductService productService;
 
     @GetMapping
@@ -34,8 +35,8 @@ public class ProductController {
     @PostMapping
     public ResponseEntity<?> post1Product(@RequestBody RequestBodyFrontEnd requestBody){
         // Get product by Id using a get function.
-        Product product = productService.getProductById(requestBody.getProductId());
-        if (product != null) {
+        Optional<Product> product = productRepository.findById(requestBody.getProductId());
+        if (product.isPresent()) {
             return ResponseEntity.ok(product);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Not Found");
@@ -44,7 +45,8 @@ public class ProductController {
 
     //@valid to validation
     @PutMapping
-    public ResponseEntity<Product> createProduct(@RequestBody  @Valid Product product){
+    public ResponseEntity<Product> createProduct(@RequestBody @Valid Product product){
+
         return ResponseEntity.status(HttpStatus.CREATED).body(
                 productRepository.save(product)
         );
