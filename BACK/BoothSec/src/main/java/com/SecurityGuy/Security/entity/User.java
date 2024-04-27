@@ -4,6 +4,7 @@ import com.SecurityGuy.Security.enums.Role;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.mapping.Set;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,6 +33,9 @@ public class User implements UserDetails {
     private String photo;
     private String location;
     private Boolean isActive;
+
+//    @OneToMany(mappedBy = "user")
+//    private Set products;
 
     // Ordinal is default, so admin is 2
     // But we want the full string so EnumType.STRING
