@@ -1,5 +1,6 @@
 package com.SecurityGuy.Security.repository;
 
+import com.SecurityGuy.Security.entity.Product;
 import com.SecurityGuy.Security.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
