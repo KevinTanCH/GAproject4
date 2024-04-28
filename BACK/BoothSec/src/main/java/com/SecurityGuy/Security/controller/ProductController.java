@@ -14,6 +14,8 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -58,6 +60,14 @@ public class ProductController {
     @PutMapping
     public ResponseEntity<?> createProduct(@RequestBody @Valid FrontEndPut1Product requestBody){
         try{
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String usernameFromToken = (String) authentication.getPrincipal();
+            Long userIdFromBody = requestBody.getSellerId();
+            System.out.println("From JWT"+usernameFromToken+" From Body"+ userIdFromBody);
+            Optional<User> user = userRepository.findByUsername(usernameFromToken);
+            Long userId = user.get().getId();
+            System.out.println(userId);
+            System.out.println("Does it match?"+ (userId.equals(userIdFromBody)));
 //            String DoesIdMatch = jwtService.extractUserId(jwt).get;
             Product createdProduct = productService.createProduct(requestBody);
             return ResponseEntity.ok(createdProduct);
