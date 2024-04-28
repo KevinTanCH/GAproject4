@@ -3,11 +3,14 @@ package com.SecurityGuy.Security.controller;
 import com.SecurityGuy.Security.Service.UserService;
 import com.SecurityGuy.Security.config.JwtService;
 import com.SecurityGuy.Security.entity.FrontEndPost1User;
+import com.SecurityGuy.Security.entity.Product;
 import com.SecurityGuy.Security.entity.User;
 import com.SecurityGuy.Security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -42,5 +45,19 @@ public class UserController {
         }
     }
 
+    @PatchMapping
+    public ResponseEntity<?> post1Buyer(@RequestBody User requstBodyUser){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String usernameFromToken = (String) authentication.getPrincipal();
+        Long userIdFromBody = requstBodyUser.getId();
+        Optional<User> user = userService.findByUsername(usernameFromToken);
+        Long userId = user.get().getId();
+        if (userId.equals(userIdFromBody)){
+            User updatedUser = userService.updateUser(requstBodyUser);
+            return ResponseEntity.ok(updatedUser);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error updating user.");
+        }
+    }
 
 }

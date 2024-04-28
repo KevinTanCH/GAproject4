@@ -89,7 +89,7 @@ public class ProductController {
                 Product updatedProduct = productService.updateProduct(requestBody);
                 return ResponseEntity.ok(updatedProduct);
             } else {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error updating new product.");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error updating product.");
             }
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
