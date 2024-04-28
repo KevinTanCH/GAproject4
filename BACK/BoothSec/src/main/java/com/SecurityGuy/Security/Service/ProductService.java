@@ -1,5 +1,6 @@
 package com.SecurityGuy.Security.Service;
 
+import com.SecurityGuy.Security.entity.FrontEndPatch1Product;
 import com.SecurityGuy.Security.entity.FrontEndPut1Product;
 import com.SecurityGuy.Security.entity.Product;
 import com.SecurityGuy.Security.entity.User;
@@ -34,4 +35,14 @@ public class ProductService {
         return productRepository.save(newProduct);
     }
 
+    public Product updateProduct(FrontEndPatch1Product requestBody) {
+        Long productId = requestBody.getProductId();
+        Product productToBePatched = productRepository.findById(productId)
+                .orElseThrow(() -> new EntityNotFoundException("Not Found" + productId));
+
+        productToBePatched.setName(requestBody.getName());
+        productToBePatched.setPrice(requestBody.getPrice());
+
+        return productRepository.save(productToBePatched);
+    }
 }

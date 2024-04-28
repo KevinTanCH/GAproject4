@@ -2,9 +2,9 @@ package com.SecurityGuy.Security.enums;
 
 public enum Permission {
     // Can have more permissions
-    READ_ALL_PRODUCTS,
+    READ_PRODUCTS,
 
-    SAVE_ONE_PRODUCT
+    EDIT_PRODUCT
 }
 // An enum is a special "class" that represents a group of constants
 // (unchangeable variables, like final variables).

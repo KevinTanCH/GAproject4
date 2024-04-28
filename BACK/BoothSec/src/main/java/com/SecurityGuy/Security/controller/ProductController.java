@@ -3,10 +3,7 @@ package com.SecurityGuy.Security.controller;
 
 import com.SecurityGuy.Security.Service.ProductService;
 import com.SecurityGuy.Security.config.JwtService;
-import com.SecurityGuy.Security.entity.FrontEndPut1Product;
-import com.SecurityGuy.Security.entity.Product;
-import com.SecurityGuy.Security.entity.FrontEndPost1Product;
-import com.SecurityGuy.Security.entity.User;
+import com.SecurityGuy.Security.entity.*;
 import com.SecurityGuy.Security.repository.ProductRepository;
 import com.SecurityGuy.Security.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -38,13 +35,14 @@ public class ProductController {
     @Autowired
     private UserRepository userRepository;
 
+    // Get all products
     @GetMapping
     public ResponseEntity<List<Product>> getProduct(){
         List<Product> allProduct = productRepository.findAll();
 
         return ResponseEntity.ok(allProduct);
     }
-
+    // Post is Get 1 product.
     @PostMapping
     public ResponseEntity<?> post1Product(@RequestBody FrontEndPost1Product requestBody){
         // Get product by Id using a get function.
@@ -56,10 +54,12 @@ public class ProductController {
         }
     }
 
-    //@valid to validation
+    // @valid to validation
+    // Put 1 product in to product table
     @PutMapping
     public ResponseEntity<?> createProduct(@RequestBody @Valid FrontEndPut1Product requestBody){
         try{
+            // Check if seller is really the same seller.
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String usernameFromToken = (String) authentication.getPrincipal();
             Long userIdFromBody = requestBody.getSellerId();
@@ -68,17 +68,32 @@ public class ProductController {
             if (userId.equals(userIdFromBody)){
                 Product createdProduct = productService.createProduct(requestBody);
                 return ResponseEntity.ok(createdProduct);
-            }            else {
+            } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error adding new product.");
             }
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-//        User user = userRepository.findById(userId).
-//                orElseThrow(() -> new EntityNotFoundException("Error getting seller ID"));
-//        product.setUser(user);
-//        return ResponseEntity.status(HttpStatus.CREATED).body(
-//                productRepository.save(product)
-//        );
     }
+
+    @PatchMapping
+    public ResponseEntity<?> updateProduct(@RequestBody @Valid FrontEndPatch1Product requestBody){
+        try{
+            // Check if seller is really the same seller.
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String usernameFromToken = (String) authentication.getPrincipal();
+            Long userIdFromBody = requestBody.getSellerId();
+            Optional<User> user = userRepository.findByUsername(usernameFromToken);
+            Long userId = user.get().getId();
+            if (userId.equals(userIdFromBody)){
+                Product updatedProduct = productService.updateProduct(requestBody);
+                return ResponseEntity.ok(updatedProduct);
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error updating new product.");
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }
