@@ -57,10 +57,8 @@ public class JwtService {
         Integer intUserId = extractAllClaims(jwt).get("userId", Integer.class);
         if (intUserId != null) {
             String userId = String.valueOf(intUserId);
-            System.out.println("ID found");
             return userId;
         } else {
-            System.out.println("User ID not found");
             return "Null";
         }
     }

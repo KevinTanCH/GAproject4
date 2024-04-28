@@ -63,14 +63,14 @@ public class ProductController {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String usernameFromToken = (String) authentication.getPrincipal();
             Long userIdFromBody = requestBody.getSellerId();
-            System.out.println("From JWT"+usernameFromToken+" From Body"+ userIdFromBody);
             Optional<User> user = userRepository.findByUsername(usernameFromToken);
             Long userId = user.get().getId();
-            System.out.println(userId);
-            System.out.println("Does it match?"+ (userId.equals(userIdFromBody)));
-//            String DoesIdMatch = jwtService.extractUserId(jwt).get;
-            Product createdProduct = productService.createProduct(requestBody);
-            return ResponseEntity.ok(createdProduct);
+            if (userId.equals(userIdFromBody)){
+                Product createdProduct = productService.createProduct(requestBody);
+                return ResponseEntity.ok(createdProduct);
+            }            else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error adding new product.");
+            }
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
