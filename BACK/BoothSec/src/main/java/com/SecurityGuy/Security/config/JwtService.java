@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -48,13 +49,29 @@ public class JwtService {
 
     public String extractUsername(String jwt) {
         // Use method from below
-        return extractAllClaims(jwt).getSubject();
+        String username = extractAllClaims(jwt).getSubject();
+        return username;
+    }
+
+    public String extractUserId(String jwt) {
+        // Use method from below
+        Integer intUserId = extractAllClaims(jwt).get("userId", Integer.class);
+        if (intUserId != null) {
+            String userId = String.valueOf(intUserId);
+            System.out.println("User ID: " + userId);
+            return userId;
+        } else {
+            System.out.println("User ID not found");
+            return "Null";
+        }
     }
 
     // Can be used for future uses
     private Claims extractAllClaims(String jwt) {
-        return Jwts.parserBuilder().setSigningKey(generateKey()).build()
+        Claims claims = Jwts.parserBuilder().setSigningKey(generateKey()).build()
                 .parseClaimsJws(jwt).getBody();
+        System.out.println("Claims: " + claims);
+        return claims;
     }
 
 

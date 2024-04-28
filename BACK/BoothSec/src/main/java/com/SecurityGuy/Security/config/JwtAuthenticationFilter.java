@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.List;
 
 
 @Component
@@ -43,6 +44,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         // 3 obtain subject/username in jwt
         String username = jwtService.extractUsername(jwt);
+        String id = jwtService.extractUserId(jwt);
 
         // 4 set authenticate object inside our security context
 

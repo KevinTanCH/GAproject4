@@ -26,6 +26,7 @@ public class ProductService {
     public Product createProduct(FrontEndPut1Product requestBody){
         User user = userRepository.findById(requestBody.getSellerId()).
                 orElseThrow(() -> new EntityNotFoundException("Error getting seller ID"));
+
         Product newProduct = new Product();
         newProduct.setUser(user);
         newProduct.setName(requestBody.getName());

@@ -2,6 +2,7 @@ package com.SecurityGuy.Security.controller;
 
 
 import com.SecurityGuy.Security.Service.ProductService;
+import com.SecurityGuy.Security.config.JwtService;
 import com.SecurityGuy.Security.entity.FrontEndPut1Product;
 import com.SecurityGuy.Security.entity.Product;
 import com.SecurityGuy.Security.entity.FrontEndPost1Product;
@@ -30,6 +31,9 @@ public class ProductController {
     private ProductService productService;
 
     @Autowired
+    private JwtService jwtService;
+
+    @Autowired
     private UserRepository userRepository;
 
     @GetMapping
@@ -54,6 +58,7 @@ public class ProductController {
     @PutMapping
     public ResponseEntity<?> createProduct(@RequestBody @Valid FrontEndPut1Product requestBody){
         try{
+//            String DoesIdMatch = jwtService.extractUserId(jwt).get;
             Product createdProduct = productService.createProduct(requestBody);
             return ResponseEntity.ok(createdProduct);
         } catch (Exception e) {
