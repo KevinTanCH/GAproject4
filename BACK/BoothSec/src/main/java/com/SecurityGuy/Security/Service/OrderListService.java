@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class OrderListService {
@@ -53,4 +52,14 @@ public class OrderListService {
         return orderListRepository.save(newOrder);
     }
 
+    public OrderList orderChangeStatus(FrontEndPatch1Order requestBody) {
+        User user = userRepository.findById(requestBody.getUserId()).
+                orElseThrow(() -> new EntityNotFoundException("Error getting buyer ID"));
+        OrderList orderToBePatched = orderListRepository.findById(requestBody.getId())
+                .orElseThrow(() -> new EntityNotFoundException("Not Found" + requestBody.getId()));
+
+        orderToBePatched.setOrderStatus(requestBody.getOrderStatus());
+        return orderListRepository.save(orderToBePatched);
+
+    }
 }
