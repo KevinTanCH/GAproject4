@@ -56,6 +56,7 @@ public class SecurityFilter {
 
 
                     authConfig.requestMatchers(HttpMethod.PUT, "/purchase").hasRole("BUYER");
+                    authConfig.requestMatchers(HttpMethod.GET, "/order/history").hasRole("BUYER");
 
                     authConfig.anyRequest().denyAll();
 

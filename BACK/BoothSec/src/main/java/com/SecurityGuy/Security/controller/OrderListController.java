@@ -9,11 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -27,6 +25,20 @@ public class OrderListController {
     @Autowired
     private OrderListService orderListService;
 
+    @GetMapping("/order/history")
+    public ResponseEntity<?> getAllPastOrders(){
+        try{
+            // Check if buyer is really the same buyer.
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String usernameFromToken = (String) authentication.getPrincipal();
+            Optional<User> user = userService.findByUsername(usernameFromToken);
+            Long userId = user.get().getId();
+            List<OrderList> pastOrders = orderListService.getPastOrders(userId);
+            return ResponseEntity.ok(pastOrders);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @PutMapping("/purchase")
     public ResponseEntity<?> put1Order(@RequestBody FrontEndPut1Order requestBody){
@@ -37,7 +49,6 @@ public class OrderListController {
             Optional<User> user = userService.findByUsername(usernameFromToken);
             Long userIdFromBody = requestBody.getBuyerId();
             Long userId = user.get().getId();
-            System.out.println(userId + " " + userIdFromBody);
             if (userId.equals(userIdFromBody)){
                 OrderList createdOrder = orderListService.createOrder(requestBody);
                 return ResponseEntity.ok(createdOrder);

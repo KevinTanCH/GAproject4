@@ -13,19 +13,22 @@ import java.time.LocalTime;
 @Setter
 @Getter
 @Entity
+@Table(name = "order_list")
 public class OrderList {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    @ManyToOne
     private Product product;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @ManyToOne
     private User user;
 
     private LocalDate dateOrdered;

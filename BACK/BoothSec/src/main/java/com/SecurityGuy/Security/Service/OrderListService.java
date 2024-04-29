@@ -1,9 +1,6 @@
 package com.SecurityGuy.Security.Service;
 
-import com.SecurityGuy.Security.entity.FrontEndPut1Order;
-import com.SecurityGuy.Security.entity.OrderList;
-import com.SecurityGuy.Security.entity.Product;
-import com.SecurityGuy.Security.entity.User;
+import com.SecurityGuy.Security.entity.*;
 import com.SecurityGuy.Security.enums.OrderStatus;
 import com.SecurityGuy.Security.repository.OrderListRepository;
 import com.SecurityGuy.Security.repository.ProductRepository;
@@ -14,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,6 +24,17 @@ public class OrderListService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    public List<OrderList> getPastOrders(Long userId) {
+        User user = userRepository.findById(userId).
+                orElseThrow(() -> new EntityNotFoundException("Error getting buyer ID"));
+
+        System.out.println("user id"+userId);
+        List<OrderList> pastOrders = orderListRepository.findByUserId(userId);
+        System.out.println("past Orders"+pastOrders);
+        return pastOrders;
+    }
+
 
     public OrderList createOrder(FrontEndPut1Order requestBody) {
         User user = userRepository.findById(requestBody.getBuyerId()).
@@ -43,4 +52,5 @@ public class OrderListService {
         newOrder.setOrderStatus(OrderStatus.PENDING_PURCHASE);
         return orderListRepository.save(newOrder);
     }
+
 }
