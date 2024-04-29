@@ -27,13 +27,16 @@ public class OrderListService {
     public List<OrderList> getPastOrders(Long userId) {
         User user = userRepository.findById(userId).
                 orElseThrow(() -> new EntityNotFoundException("Error getting buyer ID"));
-
-        System.out.println("user id"+userId);
         List<OrderList> pastOrders = orderListRepository.findByUserId(userId);
-        System.out.println("past Orders"+pastOrders);
         return pastOrders;
     }
-
+//
+//    public List<OrderList> getPastSales(List<Long> productId) {
+//
+//        List<OrderList> pastSales = orderListRepository.findByUserId(productId);
+//        return pastSales;
+//
+//    }
 
     public OrderList createOrder(FrontEndPut1Order requestBody) {
         User user = userRepository.findById(requestBody.getBuyerId()).
@@ -52,6 +55,7 @@ public class OrderListService {
         return orderListRepository.save(newOrder);
     }
 
+
     public OrderList orderChangeStatus(FrontEndPatch1Order requestBody) {
         User user = userRepository.findById(requestBody.getUserId()).
                 orElseThrow(() -> new EntityNotFoundException("Error getting buyer ID"));
@@ -62,4 +66,5 @@ public class OrderListService {
         return orderListRepository.save(orderToBePatched);
 
     }
+
 }
