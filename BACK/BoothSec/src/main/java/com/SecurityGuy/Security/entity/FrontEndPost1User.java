@@ -6,6 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class FrontEndPost1User {
-    private long userId;
+    private Long userId;
 
 }

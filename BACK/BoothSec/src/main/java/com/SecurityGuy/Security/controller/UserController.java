@@ -45,7 +45,7 @@ public class UserController {
         }
     }
 
-    @PatchMapping
+    @PatchMapping("/self")
     public ResponseEntity<?> post1Buyer(@RequestBody User requstBodyUser){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String usernameFromToken = (String) authentication.getPrincipal();

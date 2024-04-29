@@ -5,7 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class FrontEndPost1Product {
+public class FrontEndPut1Order {
+    private Long buyerId;
     private Long productId;
 
 }
