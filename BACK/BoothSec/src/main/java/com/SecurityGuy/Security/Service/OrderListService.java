@@ -38,8 +38,8 @@ public class OrderListService {
         newOrder.setAmountPaid(product.getPrice());
         newOrder.setDateOrdered(LocalDate.now());
         newOrder.setTimeOrdered(LocalTime.now());
-        newOrder.setLocationFrom(user.getLocation());
-        newOrder.setLocationTo(product.getUser().getLocation());
+        newOrder.setLocationFrom(product.getUser().getLocation());
+        newOrder.setLocationTo(user.getLocation());
         newOrder.setOrderStatus(OrderStatus.PENDING_PURCHASE);
         return orderListRepository.save(newOrder);
     }

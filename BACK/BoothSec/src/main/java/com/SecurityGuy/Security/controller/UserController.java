@@ -6,6 +6,7 @@ import com.SecurityGuy.Security.entity.FrontEndPost1User;
 import com.SecurityGuy.Security.entity.Product;
 import com.SecurityGuy.Security.entity.User;
 import com.SecurityGuy.Security.repository.UserRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,7 +47,7 @@ public class UserController {
     }
 
     @PatchMapping("/self")
-    public ResponseEntity<?> post1Buyer(@RequestBody User requstBodyUser){
+    public ResponseEntity<?> post1Buyer(@RequestBody @Valid User requstBodyUser){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String usernameFromToken = (String) authentication.getPrincipal();
         Long userIdFromBody = requstBodyUser.getId();
