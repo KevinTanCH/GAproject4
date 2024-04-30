@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Setter
@@ -31,8 +32,7 @@ public class OrderList {
     @ManyToOne
     private User user;
 
-    private LocalDate dateOrdered;
-    private LocalTime TimeOrdered;
+    private LocalDateTime TimeOrdered;
 
     @DecimalMin(value = "0.01")
     private BigDecimal amountPaid;

@@ -8,7 +8,6 @@ const Login = (props) => {
   const userCtx = useContext(UserContext);
   const usernameRef = useRef();
   const passwordRef = useRef();
-  const [role, setRole] = useState("BUYER");
   const [message, setMessage] = useState("Please Login");
 
   const handleUserLogin = async () => {
@@ -24,8 +23,8 @@ const Login = (props) => {
       console.log(res.data.accessJWT);
       const decoded = jwtDecode(res.data.accessJWT);
 
-      // userCtx.setRole(decoded.role);
-      // userCtx.setUserId(decoded.userId);
+      userCtx.setRole(decoded.role);
+      userCtx.setUserId(decoded.userId);
       setMessage("Success, Loading page" + role);
     } else {
       alert(JSON.stringify(res.data));

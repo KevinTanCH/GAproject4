@@ -28,8 +28,8 @@ public class SecurityFilter {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // Call the http object
         // Many configurations
-        // Not using session but JWT
-        // Disable csrf (prevent session stealing)
+        // Not using session but JWT, old method uses session instead of JWT.
+        // Disable csrf (prevent session stealing).
         // Use Lambda pass stateless session creation policy to management
         // Declare which endpoints are private or public and which roles can use
         // auth/authenticate as login is public, same for register new user

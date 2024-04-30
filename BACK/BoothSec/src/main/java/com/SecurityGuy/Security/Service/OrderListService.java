@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -47,8 +48,7 @@ public class OrderListService {
         newOrder.setProduct(product);
         newOrder.setUser(user);
         newOrder.setAmountPaid(product.getPrice());
-        newOrder.setDateOrdered(LocalDate.now());
-        newOrder.setTimeOrdered(LocalTime.now());
+        newOrder.setTimeOrdered(LocalDateTime.now());
         newOrder.setLocationFrom(product.getUser().getLocation());
         newOrder.setLocationTo(user.getLocation());
         newOrder.setOrderStatus(OrderStatus.PENDING_PURCHASE);
