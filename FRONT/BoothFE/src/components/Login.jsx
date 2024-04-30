@@ -18,13 +18,15 @@ const Login = (props) => {
     });
 
     if (res.ok) {
+      console.log(res.data);
+      console.log(res.data.accessJWT);
       userCtx.setAccessToken(res.data.accessJWT);
+      console.log(res.data.accessJWT);
       const decoded = jwtDecode(res.data.accessJWT);
 
-      userCtx.setRole(decoded.role);
-      userCtx.setUserId(decoded.userId);
+      // userCtx.setRole(decoded.role);
+      // userCtx.setUserId(decoded.userId);
       setMessage("Success, Loading page" + role);
-      console.log("works");
     } else {
       alert(JSON.stringify(res.data));
       setMessage("login error");

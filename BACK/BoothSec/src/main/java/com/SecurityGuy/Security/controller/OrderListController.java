@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 
+@CrossOrigin
 @RequestMapping
 @RestController
 public class OrderListController {
