@@ -88,7 +88,7 @@ public class OrderListController {
             Optional<User> user = userService.findByUsername(usernameFromToken);
             Long userIdFromBody = requestBody.getUserId();
             Long userId = user.get().getId();
-            if (userId.equals(userIdFromBody) || requestBody.getOrderStatus().equals(OrderStatus.PURCHASED)){
+            if (userId.equals(userIdFromBody) && requestBody.getOrderStatus().equals(OrderStatus.PURCHASED)){
                 OrderList createdOrder = orderListService.orderChangeStatus(requestBody);
                 return ResponseEntity.ok(createdOrder);
             } else {

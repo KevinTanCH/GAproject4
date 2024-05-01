@@ -25,7 +25,7 @@ const Login = (props) => {
 
       userCtx.setRole(decoded.role);
       userCtx.setUserId(decoded.userId);
-      setMessage("Success, Loading page" + role);
+      setMessage("Success, Loading page for " + userCtx.role);
     } else {
       alert(JSON.stringify(res.data));
       setMessage("login error");
@@ -36,7 +36,7 @@ const Login = (props) => {
     <>
       <div>
         <input ref={usernameRef} type="text" placeholder="username"></input>
-        <input ref={passwordRef} type="text" placeholder="password"></input>
+        <input ref={passwordRef} type="password" placeholder="password"></input>
         {/* TODO change type to password */}
         <button
           onClick={() => {

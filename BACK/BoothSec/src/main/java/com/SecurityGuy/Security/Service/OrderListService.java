@@ -2,6 +2,7 @@ package com.SecurityGuy.Security.Service;
 
 import com.SecurityGuy.Security.entity.*;
 import com.SecurityGuy.Security.enums.OrderStatus;
+import com.SecurityGuy.Security.enums.Role;
 import com.SecurityGuy.Security.repository.OrderListRepository;
 import com.SecurityGuy.Security.repository.ProductRepository;
 import com.SecurityGuy.Security.repository.UserRepository;
@@ -60,11 +61,17 @@ public class OrderListService {
 
     public OrderList orderChangeStatus(FrontEndPatch1Order requestBody) {
         User user = userRepository.findById(requestBody.getUserId()).
-                orElseThrow(() -> new EntityNotFoundException("Error getting buyer ID"));
+                orElseThrow(() -> new EntityNotFoundException("Error getting Buyer ID"));
         OrderList orderToBePatched = orderListRepository.findById(requestBody.getId())
                 .orElseThrow(() -> new EntityNotFoundException("Not Found" + requestBody.getId()));
 
         orderToBePatched.setOrderStatus(requestBody.getOrderStatus());
+
+        // If seller delivers products.
+        if(requestBody.getOrderStatus().equals(OrderStatus.DELIVERED)){
+            orderToBePatched.setTimeDelivered(LocalDateTime.now());
+        }
+
         return orderListRepository.save(orderToBePatched);
 
     }
