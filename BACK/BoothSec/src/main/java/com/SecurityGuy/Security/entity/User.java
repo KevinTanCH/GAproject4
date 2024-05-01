@@ -33,6 +33,7 @@ public class User implements UserDetails {
     private String password;
     private String photo;
     private String location;
+    private Boolean description;
     private Boolean isActive;
 
 //    @OneToMany(mappedBy = "user")

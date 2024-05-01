@@ -26,6 +26,7 @@ public class Product {
     @DecimalMin(value = "0.01")
     private BigDecimal price;
 
+    private  String description;
     // Link Many products to one seller (fetch = FetchType.LAZY)
     @ManyToOne
     private User user;

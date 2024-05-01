@@ -26,7 +26,6 @@ public class OrderList {
     @ManyToOne
     private Product product;
 
-
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne
@@ -42,4 +41,6 @@ public class OrderList {
 
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
+    
+    private LocalDateTime TimeDelivered;
 }
