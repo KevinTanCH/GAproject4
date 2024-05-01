@@ -32,6 +32,11 @@ public class ProductService {
         newProduct.setUser(user);
         newProduct.setName(requestBody.getName());
         newProduct.setPrice(requestBody.getPrice());
+        newProduct.setDescription(requestBody.getDescription());
+        newProduct.setPhoto(requestBody.getPhoto());
+        newProduct.setStock(requestBody.getStock());
+        newProduct.setIsAvailable(requestBody.getIsAvailable());
+
         return productRepository.save(newProduct);
     }
 
@@ -42,6 +47,9 @@ public class ProductService {
 
         productToBePatched.setName(requestBody.getName());
         productToBePatched.setPrice(requestBody.getPrice());
+        productToBePatched.setPhoto(requestBody.getPhoto());
+        productToBePatched.setStock(requestBody.getStock());
+        productToBePatched.setIsAvailable(requestBody.getIsAvailable());
 
         return productRepository.save(productToBePatched);
     }

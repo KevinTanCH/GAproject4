@@ -41,6 +41,6 @@ public class OrderList {
 
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
-    
+
     private LocalDateTime TimeDelivered;
 }

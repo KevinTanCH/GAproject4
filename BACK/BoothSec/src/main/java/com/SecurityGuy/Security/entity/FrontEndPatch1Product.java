@@ -13,11 +13,17 @@ public class FrontEndPatch1Product {
 
     // Not be blank
     @NotBlank
-    private  String name;
+    private String name;
 
     // Validation. The min price
     @DecimalMin(value = "0.01")
     private BigDecimal price;
+
+    private String description;
+    private String photo;
+    private Long stock;
+
+    private Boolean isAvailable;
 
     private Long productId;
     private Long sellerId;

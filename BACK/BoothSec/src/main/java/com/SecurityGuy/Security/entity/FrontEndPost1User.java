@@ -7,5 +7,6 @@ import lombok.Setter;
 @Setter
 public class FrontEndPost1User {
     private Long userId;
+    //Maybe used for more future commands?
 
 }

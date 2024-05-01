@@ -19,6 +19,12 @@ public class FrontEndPut1Product {
     @DecimalMin(value = "0.01")
     private BigDecimal price;
 
+    private String description;
+    private String photo;
+    private Long stock;
+
+    private Boolean isAvailable;
+
     private Long sellerId;
 
 }

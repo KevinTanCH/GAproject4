@@ -52,6 +52,8 @@ public class OrderListService {
         newOrder.setLocationFrom(product.getUser().getLocation());
         newOrder.setLocationTo(user.getLocation());
         newOrder.setOrderStatus(OrderStatus.PENDING_PURCHASE);
+        newOrder.setTimeDelivered(null);
+
         return orderListRepository.save(newOrder);
     }
 

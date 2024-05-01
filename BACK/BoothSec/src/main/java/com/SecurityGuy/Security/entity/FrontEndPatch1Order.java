@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 @Setter
 public class FrontEndPatch1Order {
 
-    private  Long id;
+    private Long id;
     private Long productId;
     private Long userId;
 

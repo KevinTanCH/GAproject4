@@ -43,8 +43,8 @@ public class UserService {
         userToBePatched.setPassword(passwordEncoder.encode(requstBodyUser.getPassword()));
         userToBePatched.setPhoto(requstBodyUser.getPhoto());
         userToBePatched.setLocation(requstBodyUser.getLocation());
+        userToBePatched.setProfileText(requstBodyUser.getProfileText());
         userToBePatched.setIsActive(requstBodyUser.getIsActive());
-
 
         return userRepository.save(userToBePatched);
     }

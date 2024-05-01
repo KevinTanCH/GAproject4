@@ -22,25 +22,26 @@ import java.util.stream.Collectors;
 @Table(name = "_user")
 public class User implements UserDetails {
 
-
+    // Configure primary key and primary key type
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String username;
+
     private String name;
     private String email;
     private String password;
     private String photo;
     private String location;
-    private Boolean description;
+    private String profileText;
     private Boolean isActive;
 
 //    @OneToMany(mappedBy = "user")
 //    private Set<Product> products;
 
-    // Ordinal is default, so admin is 2
-    // But we want the full string so EnumType.STRING
+    // Ordinal is default, so SELLER is 2
+    // But we want the full string so EnumType.STRING More data used though?
     @Enumerated(EnumType.STRING)
     private Role role;
 
