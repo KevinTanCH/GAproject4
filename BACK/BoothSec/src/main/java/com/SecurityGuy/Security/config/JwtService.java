@@ -53,7 +53,7 @@ public class JwtService {
     }
 
     public String extractUserId(String jwt) {
-        // Use method from below
+        // Use method from below to extract serId
         Integer intUserId = extractAllClaims(jwt).get("userId", Integer.class);
         if (intUserId != null) {
             String userId = String.valueOf(intUserId);

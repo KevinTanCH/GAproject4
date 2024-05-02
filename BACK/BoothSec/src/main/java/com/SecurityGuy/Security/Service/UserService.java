@@ -1,6 +1,5 @@
 package com.SecurityGuy.Security.Service;
 
-import com.SecurityGuy.Security.entity.Product;
 import com.SecurityGuy.Security.entity.User;
 import com.SecurityGuy.Security.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -22,7 +21,7 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User post1Seller(Long sellerId) {
+    public User post1UserDetail(Long sellerId) {
         return userRepository.findById(sellerId)
                 .orElseThrow( () -> new EntityNotFoundException("Not Found" + sellerId));
     }
@@ -37,6 +36,7 @@ public class UserService {
         User userToBePatched = userRepository.findById(userId)
                 .orElseThrow(() -> new EntityNotFoundException("Not Found" + userId));
 
+        // Update self
         userToBePatched.setName(requstBodyUser.getName());
         userToBePatched.setUsername(requstBodyUser.getUsername());
         userToBePatched.setEmail(requstBodyUser.getEmail());

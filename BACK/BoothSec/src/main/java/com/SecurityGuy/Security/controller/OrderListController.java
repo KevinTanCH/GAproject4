@@ -34,6 +34,7 @@ public class OrderListController {
     @GetMapping("/order/history")
     public ResponseEntity<?> getAllPastOrders(){
         try{
+            // Get userId. I should really put this into a user service method.
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String usernameFromToken = (String) authentication.getPrincipal();
             Optional<User> user = userService.findByUsername(usernameFromToken);
@@ -48,6 +49,7 @@ public class OrderListController {
     @GetMapping("/order/salehistory")
     public ResponseEntity<?> getAllPastSales(){
         try{
+            // Get userId. I should really put this into a user service method.
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String usernameFromToken = (String) authentication.getPrincipal();
             Optional<User> user = userService.findByUsername(usernameFromToken);

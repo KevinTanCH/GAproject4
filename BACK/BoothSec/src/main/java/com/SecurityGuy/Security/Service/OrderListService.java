@@ -2,7 +2,6 @@ package com.SecurityGuy.Security.Service;
 
 import com.SecurityGuy.Security.entity.*;
 import com.SecurityGuy.Security.enums.OrderStatus;
-import com.SecurityGuy.Security.enums.Role;
 import com.SecurityGuy.Security.repository.OrderListRepository;
 import com.SecurityGuy.Security.repository.ProductRepository;
 import com.SecurityGuy.Security.repository.UserRepository;
@@ -10,9 +9,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -55,8 +52,10 @@ public class OrderListService {
         newOrder.setLocationTo(user.getLocation());
         newOrder.setOrderStatus(OrderStatus.PENDING_PURCHASE);
         newOrder.setTimeDelivered(null);
-
-        product.setStock(product.getStock() - 1);
+        // Take out 1 item because buying it. I should add feature to buy multiple of same product.
+        if (product.getStock() > 0) {
+            product.setStock(product.getStock() - 1);
+        }
 
         return orderListRepository.save(newOrder);
     }
@@ -68,9 +67,10 @@ public class OrderListService {
         OrderList orderToBePatched = orderListRepository.findById(requestBody.getId())
                 .orElseThrow(() -> new EntityNotFoundException("Not Found" + requestBody.getId()));
 
+        // For users to update status. Only patch BUYER can do is "PURCHASED"
         orderToBePatched.setOrderStatus(requestBody.getOrderStatus());
 
-        // If seller delivers products.
+        // If seller delivers products. Update Time delivered
         if(requestBody.getOrderStatus().equals(OrderStatus.DELIVERED)){
             orderToBePatched.setTimeDelivered(LocalDateTime.now());
         }

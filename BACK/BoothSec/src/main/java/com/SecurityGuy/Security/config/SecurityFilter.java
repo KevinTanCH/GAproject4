@@ -47,10 +47,11 @@ public class SecurityFilter {
 
                     authConfig.requestMatchers(HttpMethod.POST, "/user/seller").permitAll();
                     authConfig.requestMatchers(HttpMethod.POST, "/user/buyer").hasAuthority(Permission.EDIT_PRODUCT.name());
+                    authConfig.requestMatchers(HttpMethod.GET, "/user/self").hasAuthority(Permission.READ_PRODUCTS.name());
                     authConfig.requestMatchers(HttpMethod.PATCH, "/user/self").hasAuthority(Permission.READ_PRODUCTS.name());
 
-                    authConfig.requestMatchers(HttpMethod.GET, "/products").hasAuthority(Permission.READ_PRODUCTS.name());
-                    authConfig.requestMatchers(HttpMethod.POST, "/products").hasAuthority(Permission.READ_PRODUCTS.name());
+                    authConfig.requestMatchers(HttpMethod.GET, "/products").permitAll();
+                    authConfig.requestMatchers(HttpMethod.POST, "/products").permitAll();
                     authConfig.requestMatchers(HttpMethod.PUT, "/products").hasAuthority(Permission.EDIT_PRODUCT.name());
                     authConfig.requestMatchers(HttpMethod.PATCH, "/products").hasAuthority(Permission.EDIT_PRODUCT.name());
                     authConfig.requestMatchers(HttpMethod.DELETE, "/products").hasAuthority(Permission.EDIT_PRODUCT.name());
@@ -66,7 +67,7 @@ public class SecurityFilter {
 
 
                 });
-
+        // I decided to protect my endpoints this way but I think may be more logical ways?
         // Build the http object
         return http.build();
 

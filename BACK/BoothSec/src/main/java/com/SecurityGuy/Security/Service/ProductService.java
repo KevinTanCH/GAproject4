@@ -57,6 +57,8 @@ public class ProductService {
     public Product deleteProduct(Long productId) {
         Product productToBeDeleted = productRepository.findById(productId)
                 .orElseThrow(() -> new EntityNotFoundException("Not Found" + productId));
+
+        // Doesn't really delete but set as "unavailable"
         productToBeDeleted.setIsAvailable(false);
 
         return productRepository.save(productToBeDeleted);

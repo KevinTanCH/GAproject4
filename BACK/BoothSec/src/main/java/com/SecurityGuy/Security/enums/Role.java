@@ -3,6 +3,7 @@ package com.SecurityGuy.Security.enums;
 import java.util.Arrays;
 import java.util.List;
 
+// Adding Lombok getter and setter to this class does not work well
 public enum Role {
 
     BUYER(Arrays.asList(Permission.READ_PRODUCTS)),

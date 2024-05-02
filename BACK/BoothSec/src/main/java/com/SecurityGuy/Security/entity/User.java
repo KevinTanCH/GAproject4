@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 // Implement User from Spring Security
 // use table name as "_user" since "user" is already used by default sql
+// This is a class with getters and setters
 @Setter
 @Getter
 @NoArgsConstructor
@@ -39,6 +40,7 @@ public class User implements UserDetails {
     private String profileText;
     private Boolean isActive;
 
+    // Doesn't work well
 //    @OneToMany(mappedBy = "user")
 //    private Set<Product> products;
 

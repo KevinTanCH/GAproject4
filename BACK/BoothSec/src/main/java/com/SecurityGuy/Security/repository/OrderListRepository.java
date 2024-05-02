@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +16,8 @@ public interface OrderListRepository extends JpaRepository<OrderList, Long> {
 
     Optional<OrderList> findById(Long Id);
 
+    // Special @Query needed because need to join 3 tables with criteria.
     @Query("SELECT o FROM OrderList o JOIN o.product p ON p.id = o.product.id WHERE p.user.id = :userId")
     List<OrderList> findPastSalesByUserId(@Param("userId") Long userId);
 }
+// Repository inherits built in methods and attributes from JpaRepository

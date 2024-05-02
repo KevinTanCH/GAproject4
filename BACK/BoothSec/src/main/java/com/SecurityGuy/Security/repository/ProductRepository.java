@@ -9,3 +9,4 @@ import java.util.Optional;
 public interface ProductRepository extends JpaRepository<Product, Long> {
     Optional<Product> findById(Long id);
 }
+// Repository inherits built in methods and attributes from JpaRepository

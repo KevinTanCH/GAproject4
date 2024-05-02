@@ -9,6 +9,6 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByUsername(String username);
 
-    // Todo Maybe login by email.
-//    Optional<User> findByEmail(String email);
+
 }
+// Repository inherits built in methods and attributes from JpaRepository
