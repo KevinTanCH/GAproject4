@@ -4,6 +4,7 @@ package com.SecurityGuy.Security.controller;
 import com.SecurityGuy.Security.Service.ProductService;
 import com.SecurityGuy.Security.config.JwtService;
 import com.SecurityGuy.Security.entity.*;
+import com.SecurityGuy.Security.enums.Role;
 import com.SecurityGuy.Security.repository.ProductRepository;
 import com.SecurityGuy.Security.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -96,4 +97,20 @@ public class ProductController {
         }
     }
 
+    // "Delete" but not really. Just set product to "Unavailable".
+    @DeleteMapping
+    public ResponseEntity<?> deleteProduct(@RequestBody FrontEndPost1Product requestBody){
+        // Check if seller is really the same seller.
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String usernameFromToken = (String) authentication.getPrincipal();
+        Optional<User> user = userRepository.findByUsername(usernameFromToken);
+        Long userId = user.get().getId();
+        Optional<Product> productToBeDeleted = productRepository.findById(requestBody.getProductId());
+        if (userId.equals(productToBeDeleted.get().getUser().getId())){
+            Product deletedProduct = productService.deleteProduct(requestBody.getProductId());
+            return ResponseEntity.ok(deletedProduct);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error deleting product.");
+        }
+    }
 }

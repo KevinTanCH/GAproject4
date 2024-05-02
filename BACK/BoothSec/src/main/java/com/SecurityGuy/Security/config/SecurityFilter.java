@@ -53,6 +53,7 @@ public class SecurityFilter {
                     authConfig.requestMatchers(HttpMethod.POST, "/products").hasAuthority(Permission.READ_PRODUCTS.name());
                     authConfig.requestMatchers(HttpMethod.PUT, "/products").hasAuthority(Permission.EDIT_PRODUCT.name());
                     authConfig.requestMatchers(HttpMethod.PATCH, "/products").hasAuthority(Permission.EDIT_PRODUCT.name());
+                    authConfig.requestMatchers(HttpMethod.DELETE, "/products").hasAuthority(Permission.EDIT_PRODUCT.name());
 
 
                     authConfig.requestMatchers(HttpMethod.PUT, "/purchase").hasRole("BUYER");

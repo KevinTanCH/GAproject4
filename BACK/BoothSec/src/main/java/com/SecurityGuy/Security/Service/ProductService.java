@@ -53,4 +53,13 @@ public class ProductService {
 
         return productRepository.save(productToBePatched);
     }
+
+    public Product deleteProduct(Long productId) {
+        Product productToBeDeleted = productRepository.findById(productId)
+                .orElseThrow(() -> new EntityNotFoundException("Not Found" + productId));
+        productToBeDeleted.setIsAvailable(false);
+
+        return productRepository.save(productToBeDeleted);
+
+    }
 }
