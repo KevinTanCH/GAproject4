@@ -5,7 +5,7 @@ import useFetch from "../hooks/useFetch";
 const ProductDetail = (props) => {
   const fetchData = useFetch();
   const userCtx = useContext(UserContext);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState("");
 
   const LoadProductDetails = async (id) => {
     try {
@@ -33,13 +33,13 @@ const ProductDetail = (props) => {
 
   return (
     <div>
-      {data != [] ? (
+      {data != "" ? (
         <div>
-          {data.name}
-          {data.price}
-          {data.description}
-          {data.stock}
-          {data.user.name}
+          name: {data.name}
+          {data.photo} ${data.price}
+          description {data.description}
+          {data.stock} left Seller {data.user.name}
+          Item is {data.isAvailable}
         </div>
       ) : (
         <div> Unavailable</div>

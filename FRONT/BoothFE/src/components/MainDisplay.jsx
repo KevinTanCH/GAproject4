@@ -17,6 +17,7 @@ const MainDisplay = () => {
   const [productId, setProductId] = useState();
   const [orderId, setOrderId] = useState();
   const [productArr, setProductArr] = useState([]);
+  const [orderListArr, setOrderListArr] = useState([]);
 
   return (
     <>
@@ -38,6 +39,8 @@ const MainDisplay = () => {
           setOrderId,
           productArr,
           setProductArr,
+          orderListArr,
+          setOrderListArr,
         }}
       >
         <Login></Login>

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import ProductCard from "./ProductCard";
 import UserContext from "../context/user";
 import useFetch from "../hooks/useFetch";
+import ProductCard from "./ProductCard";
 
 const ProductListDisplay = (props) => {
   const fetchData = useFetch();

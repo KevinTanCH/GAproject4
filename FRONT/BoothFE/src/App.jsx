@@ -4,7 +4,7 @@ import MainDisplay from "./components/MainDisplay";
 function App() {
   return (
     <div>
-      <h2>Booth Shop</h2>
+      <h2>SpringBOOTh</h2>
       <MainDisplay></MainDisplay>
     </div>
   );
