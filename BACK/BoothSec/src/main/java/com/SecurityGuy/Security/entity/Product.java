@@ -3,14 +3,17 @@ package com.SecurityGuy.Security.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
 @Setter
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Entity
+@Table(name = "product")
 public class Product {
 
     // Pass null to tell the front end we are already doing it
@@ -32,6 +35,7 @@ public class Product {
 
     // Link Many products to one seller (fetch = FetchType.LAZY)
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
     private Boolean isAvailable;

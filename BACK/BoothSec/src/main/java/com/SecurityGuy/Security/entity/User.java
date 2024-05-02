@@ -2,8 +2,7 @@ package com.SecurityGuy.Security.entity;
 
 import com.SecurityGuy.Security.enums.Role;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,6 +17,9 @@ import java.util.stream.Collectors;
 // use table name as "_user" since "user" is already used by default sql
 @Setter
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Entity
 @Table(name = "_user")
 public class User implements UserDetails {
