@@ -47,6 +47,7 @@ const ProductListDisplay = (props) => {
                 sellerId={item.user.id}
                 sellerName={item.user.name}
                 isAvailable={item.isAvailable}
+                setProductSelected={userCtx.setProductSelected}
               ></ProductCard>
             );
           })

@@ -11,7 +11,7 @@ SELECT * FROM order_list;
 SELECT p FROM order_list p 
 ORDER BY p.time_ordered DESC;
 
-SELECT o FROM order_list o 
-JOIN FETCH o.product p 
-JOIN FETCH p.user u 
-WHERE u.id = 1;
+SELECT ol FROM order_list ol 
+JOIN FETCH ol.product prod 
+JOIN FETCH prod.user usr 
+WHERE usr.id = 3;

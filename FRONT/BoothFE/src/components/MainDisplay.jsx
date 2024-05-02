@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import UserContext from "../context/user";
 import useFetch from "../hooks/useFetch";
 import Login from "./Login";
-import ProductListDisplay from "./ProductListDisplay";
-import OrderList from "./OrderList";
-import Cart from "./Cart";
 import UserDetail from "./UserDetail";
+import ProductListDisplay from "./ProductListDisplay";
+import ProductDetail from "./ProductDetail";
+import Cart from "./Cart";
+import OrderList from "./OrderList";
 
 const MainDisplay = () => {
   const [accessToken, setAccessToken] = useState("");
   const [role, setRole] = useState("");
   const [userId, setUserId] = useState();
   const [otherUserId, setOtherUserId] = useState();
+  const [productSelected, setProductSelected] = useState();
   const [productId, setProductId] = useState();
   const [orderId, setOrderId] = useState();
   const [productArr, setProductArr] = useState([]);
@@ -28,6 +30,8 @@ const MainDisplay = () => {
           setUserId,
           otherUserId,
           setOtherUserId,
+          productSelected,
+          setProductSelected,
           productId,
           setProductId,
           orderId,
@@ -39,8 +43,9 @@ const MainDisplay = () => {
         <Login></Login>
         <UserDetail></UserDetail>
         <ProductListDisplay></ProductListDisplay>
-        <OrderList></OrderList>
+        <ProductDetail productSelected={productSelected}></ProductDetail>
         <Cart></Cart>
+        <OrderList></OrderList>
       </UserContext.Provider>
     </>
   );
