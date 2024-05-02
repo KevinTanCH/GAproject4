@@ -32,13 +32,14 @@ public class OrderListService {
         List<OrderList> pastOrders = orderListRepository.findByUserId(userId);
         return pastOrders;
     }
-//
-//    public List<OrderList> getPastSales(List<Long> productId) {
-//
-//        List<OrderList> pastSales = orderListRepository.findByUserId(productId);
-//        return pastSales;
-//
-//    }
+
+    public List<OrderList> getPastSales(Long userId) {
+        User user = userRepository.findById(userId).
+                orElseThrow(() -> new EntityNotFoundException("Error getting buyer ID"));
+        List<OrderList> pastSales = orderListRepository.findPastSalesByUserId(userId);
+        return pastSales;
+
+    }
 
     public OrderList createOrder(FrontEndPut1Order requestBody) {
         User user = userRepository.findById(requestBody.getBuyerId()).

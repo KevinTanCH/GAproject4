@@ -44,20 +44,20 @@ public class OrderListController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-//
-//    @GetMapping("/order/salehistory")
-//    public ResponseEntity<?> getAllPastSales(){
-//        try{
-//            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//            String usernameFromToken = (String) authentication.getPrincipal();
-//            Optional<User> user = userService.findByUsername(usernameFromToken);
-//            Long userId = user.get().getId();
-//            List<OrderList> pastOrders = orderListService.getPastSales(userId);
-//            return ResponseEntity.ok(pastOrders);
-//        } catch (Exception e) {
-//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
+
+    @GetMapping("/order/salehistory")
+    public ResponseEntity<?> getAllPastSales(){
+        try{
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String usernameFromToken = (String) authentication.getPrincipal();
+            Optional<User> user = userService.findByUsername(usernameFromToken);
+            Long userId = user.get().getId();
+            List<OrderList> pastOrders = orderListService.getPastSales(userId);
+            return ResponseEntity.ok(pastOrders);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
     @PutMapping("/purchase")
     public ResponseEntity<?> put1Order(@RequestBody FrontEndPut1Order requestBody){
