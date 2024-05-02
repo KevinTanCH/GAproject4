@@ -47,7 +47,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/self")
+    @PostMapping("/self")
     public ResponseEntity<?> getSelf(@RequestBody FrontEndPost1User requstBodyUser){
         // Check if self is really self.
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

@@ -31,7 +31,7 @@ const OrderList = (props) => {
   };
 
   return (
-    <div>
+    <div className="container">
       Order List Display
       <button
         onClick={() => {
@@ -40,6 +40,17 @@ const OrderList = (props) => {
       >
         Get Order List
       </button>
+      <div className="row">
+        <div className="col-sm-1">Order Id</div>
+        <div className="col-sm-1">Product</div>
+        <div className="col-sm-1">Amount Paid</div>
+        <div className="col-sm-1">Buyer</div>
+        <div className="col-sm-1">From</div>
+        <div className="col-sm-1">To</div>
+        <div className="col-sm-1">Time Ordered</div>
+        <div className="col-sm-1">Time Delivered</div>
+        <div className="col-sm-1">Status</div>
+      </div>
       <div>
         {userCtx.orderListArr.length !== 0 ? (
           userCtx.orderListArr.map((item, id) => {
@@ -47,9 +58,12 @@ const OrderList = (props) => {
               <OrderListCard
                 key={item.id}
                 id={item.id}
+                productId={item.product.id}
                 productName={item.product.name}
                 amountPaid={item.amountPaid}
+                sellerId={item.product.user.id}
                 sellerName={item.product.user.name}
+                buyerId={item.user.id}
                 buyerName={item.user.name}
                 locationFrom={item.locationFrom}
                 locationTo={item.locationTo}

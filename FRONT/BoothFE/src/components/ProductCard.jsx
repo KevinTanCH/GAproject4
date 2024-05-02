@@ -6,21 +6,21 @@ const ProductCard = (props) => {
 
   const handleProductSelect = () => {
     props.setProductSelected(props.id);
-    console.log(props.id);
+    userCtx.setViewState(2);
   };
 
   return (
     <div
+      className="row"
       onClick={(e) => {
         handleProductSelect(e);
       }}
     >
-      A Product Card
-      <div>{props.photo}</div>
-      <div>{props.name}</div>
-      <div>{props.price}</div>
-      <div>{props.sellerName}</div>
-      <div>
+      {/* <div>{props.photo}</div> */}
+      <div className="col-sm-1">{props.name}</div>
+      <div className="col-sm-1">{props.price}</div>
+      <div className="col-sm-1">{props.sellerName}</div>
+      <div className="col-sm-1">
         {props.isAvailable == true ? (
           <div>Available</div>
         ) : (

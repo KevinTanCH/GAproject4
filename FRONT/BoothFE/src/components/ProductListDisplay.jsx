@@ -25,7 +25,7 @@ const ProductListDisplay = (props) => {
   };
 
   return (
-    <div>
+    <div className="container">
       Product List Display
       <button
         onClick={() => {
@@ -34,6 +34,12 @@ const ProductListDisplay = (props) => {
       >
         Get All Products
       </button>
+      <div className="row">
+        <div className="col-sm-1">Name</div>
+        <div className="col-sm-1">price</div>
+        <div className="col-sm-1">Seller</div>
+        <div className="col-sm-1">In Stock?</div>
+      </div>
       <div>
         {userCtx.productArr.length !== 0 ? (
           userCtx.productArr.map((item, id) => {

@@ -2,35 +2,39 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import UserContext from "../context/user";
 
-const UserDetail = (props) => {
+const OtherUserDetails = (props) => {
   const fetchData = useFetch();
   const userCtx = useContext(UserContext);
   const [data, setData] = useState("");
 
-  const LoadProfileDetails = async () => {
+  const LoadOtherUserDetails = async () => {
     try {
+      let post1UserEndPoint = "";
+      if (userCtx.role == "SELLER") {
+        post1UserEndPoint = "/user/buyer";
+      } else {
+        post1UserEndPoint = "/user/seller";
+      }
       const res = await fetchData(
-        "/user/self",
+        post1UserEndPoint,
         "POST",
-        { userId: props.userId },
+        { userId: userCtx.otherUserId },
         userCtx.accessToken
       );
       if (res.ok) {
         const data = await res.data;
         setData(res.data);
-        console.log(data);
       }
     } catch (error) {
-      console.log("Failed to get self detail");
+      console.log("Failed to get other user detail");
       console.log(error);
     }
   };
-
   useEffect(() => {
-    if (props.userId) {
-      LoadProfileDetails(props.userId);
+    if (props.otherUserId) {
+      LoadOtherUserDetails(props.otherUserId);
     }
-  }, [props.userId]);
+  }, [props.otherUserId]);
 
   return (
     <div className="container">
@@ -58,4 +62,4 @@ const UserDetail = (props) => {
   );
 };
 
-export default UserDetail;
+export default OtherUserDetails;

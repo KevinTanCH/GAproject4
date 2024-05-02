@@ -41,6 +41,7 @@ public class AuthenticationService {
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setPhoto(request.getPhoto());
         user.setLocation(request.getLocation());
+        user.setProfileText(request.getProfileText());
         user.setActive(request.getActive());
         user.setRole(request.getRole());
         userRepository.save(user);
