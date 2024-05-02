@@ -3,6 +3,8 @@ import UserContext from "../context/user";
 import useFetch from "../hooks/useFetch";
 import Login from "./Login";
 import ProductListDisplay from "./ProductListDisplay";
+import OrderList from "./OrderList";
+import Cart from "./Cart";
 import UserDetail from "./UserDetail";
 
 const MainDisplay = () => {
@@ -12,7 +14,7 @@ const MainDisplay = () => {
   const [otherUserId, setOtherUserId] = useState();
   const [productId, setProductId] = useState();
   const [orderId, setOrderId] = useState();
-  const [productArr, setProductArr] = useState();
+  const [productArr, setProductArr] = useState([]);
 
   return (
     <>
@@ -35,8 +37,10 @@ const MainDisplay = () => {
         }}
       >
         <Login></Login>
-        <ProductListDisplay></ProductListDisplay>
         <UserDetail></UserDetail>
+        <ProductListDisplay></ProductListDisplay>
+        <OrderList></OrderList>
+        <Cart></Cart>
       </UserContext.Provider>
     </>
   );

@@ -9,7 +9,6 @@ const ProductListDisplay = (props) => {
 
   const getAllProducts = async () => {
     try {
-      console.log(userCtx.accessToken);
       const res = await fetchData(
         "/products",
         "GET",
@@ -17,11 +16,10 @@ const ProductListDisplay = (props) => {
         userCtx.accessToken
       );
       if (res.ok) {
-        console.log(res.data);
-        userCtx.setProdcutArr(res.data);
+        userCtx.setProductArr(res.data);
       }
     } catch (error) {
-      console.log("failed to get all");
+      console.log("Failed to get all");
       console.log(error);
     }
   };
@@ -34,7 +32,7 @@ const ProductListDisplay = (props) => {
           getAllProducts();
         }}
       >
-        Get All
+        Get All Products
       </button>
       <div>
         {userCtx.productArr.length !== 0 ? (
@@ -43,7 +41,12 @@ const ProductListDisplay = (props) => {
               <ProductCard
                 key={item.id}
                 id={item.id}
-                name={name.id}
+                name={item.name}
+                price={item.price}
+                photo={item.photo}
+                sellerId={item.user.id}
+                sellerName={item.user.name}
+                isAvailable={item.isAvailable}
               ></ProductCard>
             );
           })

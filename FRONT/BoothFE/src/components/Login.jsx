@@ -17,10 +17,8 @@ const Login = (props) => {
     });
 
     if (res.ok) {
-      console.log(res.data);
-      console.log(res.data.accessJWT);
+      console.log("Login Success.");
       userCtx.setAccessToken(res.data.accessJWT);
-      console.log(res.data.accessJWT);
       const decoded = jwtDecode(res.data.accessJWT);
 
       userCtx.setRole(decoded.role);

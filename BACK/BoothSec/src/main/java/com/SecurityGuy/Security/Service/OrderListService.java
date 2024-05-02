@@ -55,6 +55,8 @@ public class OrderListService {
         newOrder.setOrderStatus(OrderStatus.PENDING_PURCHASE);
         newOrder.setTimeDelivered(null);
 
+        product.setStock(product.getStock() - 1);
+
         return orderListRepository.save(newOrder);
     }
 
