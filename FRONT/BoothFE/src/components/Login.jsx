@@ -37,7 +37,6 @@ const Login = (props) => {
       <div>
         <input ref={usernameRef} type="text" placeholder="username"></input>
         <input ref={passwordRef} type="password" placeholder="password"></input>
-        {/* TODO change type to password */}
         <button
           onClick={() => {
             handleUserLogin();

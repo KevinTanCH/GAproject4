@@ -8,10 +8,11 @@ import UserDetail from "./UserDetail";
 const MainDisplay = () => {
   const [accessToken, setAccessToken] = useState("");
   const [role, setRole] = useState("");
-  const [userId, setUserId] = useState("");
-  const [otherUserId, setOtherUserId] = useState("");
-  const [productId, setProductId] = useState("");
-  const [orderId, setOrderId] = useState("");
+  const [userId, setUserId] = useState();
+  const [otherUserId, setOtherUserId] = useState();
+  const [productId, setProductId] = useState();
+  const [orderId, setOrderId] = useState();
+  const [productArr, setProductArr] = useState();
 
   return (
     <>
@@ -29,6 +30,8 @@ const MainDisplay = () => {
           setProductId,
           orderId,
           setOrderId,
+          productArr,
+          setProductArr,
         }}
       >
         <Login></Login>

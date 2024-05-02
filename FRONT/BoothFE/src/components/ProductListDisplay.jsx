@@ -18,6 +18,7 @@ const ProductListDisplay = (props) => {
       );
       if (res.ok) {
         console.log(res.data);
+        userCtx.setProdcutArr(res.data);
       }
     } catch (error) {
       console.log("failed to get all");
@@ -35,7 +36,21 @@ const ProductListDisplay = (props) => {
       >
         Get All
       </button>
-      <ProductCard></ProductCard>
+      <div>
+        {userCtx.productArr.length !== 0 ? (
+          userCtx.productArr.map((item, id) => {
+            return (
+              <ProductCard
+                key={item.id}
+                id={item.id}
+                name={name.id}
+              ></ProductCard>
+            );
+          })
+        ) : (
+          <div>Empty product list. Please Refresh</div>
+        )}
+      </div>
     </div>
   );
 };
