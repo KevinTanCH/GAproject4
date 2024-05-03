@@ -16,11 +16,11 @@ GA Project 4
 - JavaScript
 - HTML
 - CSS
-- Bootstrap
+- Bootstrap (For column size adjustment)
 
 #### Backend
 
-- JAVA
+- Java
 - Spring Boot
 - Spring Boot starter data Jpa
 - Spring Boot starter security
@@ -29,9 +29,9 @@ GA Project 4
 - Spring Boot starter test (Not used but just included)
 - Spring Boot security test (Not used but just included)
 - Lombok
-- jjwt-api
-- jjwt-impl
-- jjwt-jackson
+- jjwt-api 0.11.5
+- jjwt-impl 0.11.5
+- jjwt-jackson 0.11.5
 - PostgreSQL
 - pgAdmin4 (GUI for SQL)
 
