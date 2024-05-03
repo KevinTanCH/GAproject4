@@ -1,8 +1,12 @@
 # GAproject4
-GA Project 4
+GA Project 4 Spring BOOTh
 
+### Personal Notes
+I haven't matched all end points for front end yet so back end is waiting for front end to have a fetch function to sent. And Back end needs to refractor.
+I just wanted to learn Java and try making a backend server. But the time constraint of 2 weeks was really REALLY tiring. I only knew some C++ before learning Java.
 
 ### Description
+
 
 
 ### Screenshot(s)
