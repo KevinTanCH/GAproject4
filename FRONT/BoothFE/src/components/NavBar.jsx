@@ -29,7 +29,7 @@ const NavBar = (props) => {
       >
         Products
       </button>
-      {userCtx.role == "BUYER" ? (
+      {/* {userCtx.role == "BUYER" ? (
         <>
           <button
             className="col-md-3"
@@ -42,7 +42,7 @@ const NavBar = (props) => {
         </>
       ) : (
         <></>
-      )}
+      )} */}
       {userCtx.role == "SELLER" ? (
         <>
           <button

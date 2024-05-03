@@ -18,7 +18,6 @@ const UserDetail = (props) => {
       if (res.ok) {
         const data = await res.data;
         setData(res.data);
-        console.log(data);
       }
     } catch (error) {
       console.log("Failed to get self detail");

@@ -20,13 +20,13 @@ public class SecurityBeansInjector {
     @Autowired
     private UserRepository userRepository;
 
-
+    //Declaring a Bean to be injected.
+    //Beans are object that is instantiated, assembled and managed by Spring Boot
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
 
         return authenticationConfiguration.getAuthenticationManager(); //providerManager implements AuthenticationManager
     }
-
 
     @Bean
     public AuthenticationProvider authenticationProvider(){

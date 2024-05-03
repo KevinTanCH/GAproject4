@@ -23,18 +23,19 @@ public class SecurityFilter {
     @Autowired
     private JwtAuthenticationFilter jwtAuthenticationFilter;
 
-    // Inject the HttpSecurity
+    // Inject the HttpSecurity bean
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // Call the http object
         // Many configurations
         // Not using session but JWT, old method uses session instead of JWT.
-        // Disable csrf (prevent session stealing).
-        // Use Lambda pass stateless session creation policy to management
+        // Disable csrf (prevent session stealing but not needed anymore).
+        // Use Lambda pass stateless session creation policy to management, no longer using session
         // Declare which endpoints are private or public and which roles can use
         // auth/authenticate as login is public, same for register new user
         // Whenever there is an error, everything is routed
         // Deny all endpoints that are not specified here.
+        // I decided to protect my endpoints this way but I think may be more logical ways?
         http
                 .csrf(csrfConfig -> csrfConfig.disable())
                 .sessionManagement(sessionMangConfig -> sessionMangConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -67,7 +68,6 @@ public class SecurityFilter {
 
 
                 });
-        // I decided to protect my endpoints this way but I think may be more logical ways?
         // Build the http object
         return http.build();
 

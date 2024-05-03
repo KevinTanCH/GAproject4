@@ -29,7 +29,8 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    // Unique
+//    @Column(unique = true)
     private String username;
 
     private String name;
@@ -45,7 +46,7 @@ public class User implements UserDetails {
 //    private Set<Product> products;
 
     // Ordinal is default, so SELLER is 2
-    // But we want the full string so EnumType.STRING More data used though?
+    // But we want the full string so EnumType.STRING More data used in storage though
     @Enumerated(EnumType.STRING)
     private Role role;
 

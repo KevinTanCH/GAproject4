@@ -23,6 +23,7 @@ public class OrderList {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // Some errors for fetch type
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "product_id", referencedColumnName = "id")
     @ManyToOne

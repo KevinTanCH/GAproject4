@@ -50,9 +50,9 @@ const OrderListCard = (props) => {
 
   const handleUserSelect = () => {
     if (userCtx.role == "BUYER") {
-      userCtx.setOtherUserId(props.buyerId);
-    } else {
       userCtx.setOtherUserId(props.sellerId);
+    } else if (userCtx.role == "SELLER") {
+      userCtx.setOtherUserId(props.buyerId);
     }
     userCtx.setViewState(7);
   };
@@ -101,7 +101,6 @@ const OrderListCard = (props) => {
         ) : (
           <>
             <select ref={patchStatusRef}>
-              <option value="PENDING_PURCHASE">PENDING_PURCHASE</option>
               <option value="PURCHASED">PURCHASED</option>
             </select>
             <button

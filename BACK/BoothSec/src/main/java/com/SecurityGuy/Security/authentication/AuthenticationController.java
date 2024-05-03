@@ -4,6 +4,7 @@ import com.SecurityGuy.Security.entity.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+// Enable Cors to disable CORS error when fetching
 @CrossOrigin
 @RestController
 @RequestMapping("/auth")

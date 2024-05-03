@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import UserContext from "../context/user";
 import useFetch from "../hooks/useFetch";
+import styles from "../css/Main.module.css";
 import NavBar from "./NavBar";
 import Login from "./Login";
 import ProductListDisplay from "./ProductListDisplay";
@@ -43,7 +44,7 @@ const MainDisplay = () => {
           setOrderListArr,
         }}
       >
-        <h2>SpringBOOTh</h2>
+        <h2 className={styles.logo}>SpringBOOTh</h2>
         <NavBar></NavBar>
         <br></br>
         {viewState == 0 ? (
@@ -74,13 +75,13 @@ const MainDisplay = () => {
         ) : (
           <> </>
         )}
-        {viewState == 4 ? (
+        {/* {viewState == 4 ? (
           <>
             <Cart></Cart>
           </>
         ) : (
           <> </>
-        )}
+        )} */}
         {viewState == 5 ? (
           <>
             <OrderList></OrderList>

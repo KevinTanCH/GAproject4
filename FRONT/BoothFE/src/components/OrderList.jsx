@@ -44,7 +44,7 @@ const OrderList = (props) => {
         <div className="col-sm-1">Order Id</div>
         <div className="col-sm-1">Product</div>
         <div className="col-sm-1">Amount Paid</div>
-        <div className="col-sm-1">Buyer</div>
+        <div className="col-sm-1">User</div>
         <div className="col-sm-1">From</div>
         <div className="col-sm-1">To</div>
         <div className="col-sm-1">Time Ordered</div>

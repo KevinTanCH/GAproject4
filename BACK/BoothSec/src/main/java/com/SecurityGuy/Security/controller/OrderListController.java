@@ -64,7 +64,7 @@ public class OrderListController {
     @PutMapping("/purchase")
     public ResponseEntity<?> put1Order(@RequestBody FrontEndPut1Order requestBody){
         try{
-            // Check if buyer is really the same buyer.
+            // Check if buyer is really the same buyer. I should really put this into a user service method.
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String usernameFromToken = (String) authentication.getPrincipal();
             Optional<User> user = userService.findByUsername(usernameFromToken);
@@ -84,7 +84,7 @@ public class OrderListController {
     @PatchMapping("/order/buyerpatch")
     public ResponseEntity<?> patch1Order(@RequestBody @Valid FrontEndPatch1Order requestBody){
         try{
-            // Check if buyer is really the same buyer.
+            // Check if buyer is really the same buyer. I should really put this into a user service method.
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String usernameFromToken = (String) authentication.getPrincipal();
             Optional<User> user = userService.findByUsername(usernameFromToken);

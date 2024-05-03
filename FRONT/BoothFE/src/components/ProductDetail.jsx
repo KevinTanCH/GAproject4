@@ -107,24 +107,24 @@ const ProductDetail = (props) => {
                 </button>
               </>
             ) : (
-              <> </>
-            )}
-          </div>
-          <div>
-            {userCtx.role == "BUYER" ? (
               <>
-                <button
-                  onClick={() => {
-                    buyProduct();
-                  }}
-                >
-                  Buy?
-                </button>
+                {data.isAvailable == true ? (
+                  <>
+                    <button
+                      onClick={() => {
+                        buyProduct();
+                      }}
+                    >
+                      Buy?
+                    </button>
+                  </>
+                ) : (
+                  <> </>
+                )}{" "}
               </>
-            ) : (
-              <> </>
             )}
           </div>
+          <div></div>
         </div>
       ) : (
         <div> Unavailable</div>
