@@ -15,7 +15,7 @@ I just wanted to learn Java and try making a backend server within 2 weeks. It w
 I couldn't have done it without the help of my course instructor and course teaching assistant.
 
 ### Screenshot(s)
-
+![Store Page as viewed by buyer.](./ReadMePics/Screenshot 2024-05-04 155357.png "Store Page as viewed by buyer.")
 
 ### Technologies Used
 
