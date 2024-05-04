@@ -51,8 +51,14 @@ I couldn't have done it without the help of my course instructor and course teac
 
 
 ### Getting Started
-[Wireframe proposal](./ReadMePics/ProposedWireframe.png "Store Page as viewed by buyer.")
-[Entity Relationship Diagram](./ReadMePics/ERD.png "Store Page as viewed by buyer.")
+Wireframe proposal
+
+![Wireframe proposal](./ReadMePics/ProposedWireframe.png "Wireframe proposal")
+
+Entity Relationship Diagram
+
+![Entity Relationship Diagram](./ReadMePics/ERD.png "Entity Relationship Diagram")
+
 For public board see below in ice box.
 
 #### Front End
@@ -114,12 +120,31 @@ grant all on  schema public to db_user;
 
 
 ### How to use
-
+First run database, back end and front end.
 #### Login/Registration:
+Create an account or login. 
+
+![Alt text](./ReadMePics/Login.png "Login/Register")
+
+#### Seller:
+As a seller, you can create new items to sell on the shop. 
+
+![Alt text](./ReadMePics/seller1.png "seller view on store page")
+
+You can track your orders from buyers. You can click on the buyer's name in the orderlist to view more info on your buyers.
+
+![Alt text](./ReadMePics/seller2.png "seller view on order page")
+
 
 #### Buyer:
 
-#### Seller:
+As a buyer, you can buy items on the shop. Click on an item in the store page to view item detail. In the item detail page you can click on the seller name to view more details on the seller.
+
+![Alt text](./ReadMePics/buyer1.png "buyer view on store page")
+
+You can track your orders. You can click on the seller's name in the orderlist to view more info on the seller.
+
+![Alt text](./ReadMePics/buyer2.png "buyer view on order page")
 
 
 
