@@ -9,14 +9,15 @@ Users can then track the their orders in the store.
 
 
 ### Personal Notes 
-I haven't matched all end points for front end yet so back end waiting endpoints. And Back end definitely needs to refractor. 
+I haven't matched all end points for front end yet so back end has waiting endpoints. And Back end definitely needs to refractor. 
 What I think I need to do: 
 - refractor cors from each local controller to webconfigurer for global cors.
 - add admin account
 - add cart for both front end and back end
 - add DTO for backend to sanitise data
 - and many more in icebox.
-I just wanted to learn Java and try making a backend server within 2 weeks. It was doable but the time constraint of 2 weeks was really REALLY tiring. I only knew some C++ before learning Java on 20/04/2024. 
+
+I just wanted to learn Java and try making a backend server within 2 weeks. I only knew some C++ before learning Java on 20/04/2024. It was doable to meet the time on 03/05/2024 but the time constraint of 2 weeks was really REALLY tiring. 
 I couldn't have done it without the help of my course instructor and course teaching assistant.
 
 ### Screenshot(s)
@@ -32,7 +33,7 @@ I couldn't have done it without the help of my course instructor and course teac
 - CSS
 - Bootstrap (For column size adjustment)
 
-#### Backend
+#### Backend and server
 
 - Java
 - Spring Boot
@@ -55,7 +56,7 @@ Wireframe proposal
 
 ![Wireframe proposal](./ReadMePics/ProposedWireframe.png "Wireframe proposal")
 
-Entity Relationship Diagram
+Entity Relationship Diagram proposal
 
 ![Entity Relationship Diagram](./ReadMePics/ERD.png "Entity Relationship Diagram")
 
@@ -87,7 +88,7 @@ npm run dev
 
 #### Back End 
 Download Java JDK 22 or Java.
-If needed, you might have to add a System variables for JAVA_HOME point to where you install your jdk_22 or java.
+If needed, you might have to add a System variables for JAVA_HOME point to where you install your jdk_22 or Java.
 The Maven 3.8.8 will read the pom.xml and should take care of the depencies of backend.
 Set up the back end application properties file. The values can be anything but be sure to match the values to front end and database.
 ```
@@ -127,22 +128,22 @@ Create an account or login.
 ![Alt text](./ReadMePics/Login.png "Login/Register")
 
 #### Seller:
-As a seller, you can create new items to sell on the shop. 
+As a seller, seller can create new items to sell on the shop. 
 
 ![Alt text](./ReadMePics/seller1.png "seller view on store page")
 
-You can track your orders from buyers. You can click on the buyer's name in the orderlist to view more info on your buyers.
+Seller can track your orders from buyers. Seller can click on the buyer's name in the order list to view more info on buyers. Seller can edit order status.
 
 ![Alt text](./ReadMePics/seller2.png "seller view on order page")
 
 
 #### Buyer:
 
-As a buyer, you can buy items on the shop. Click on an item in the store page to view item detail. In the item detail page you can click on the seller name to view more details on the seller.
+As a buyer, buyer can buy items on the shop. Click on an item in the store page to view item detail. In the item detail page Buyer can click on the seller name to view more details on the seller.
 
 ![Alt text](./ReadMePics/buyer1.png "buyer view on store page")
 
-You can track your orders. You can click on the seller's name in the orderlist to view more info on the seller.
+Buyer can track your orders. Buyer can click on the seller's name in the order list to view more info on the seller. Buyer can set order status to purchase
 
 ![Alt text](./ReadMePics/buyer2.png "buyer view on order page")
 
