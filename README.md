@@ -73,19 +73,33 @@ Run front end
 npm run dev
 ```
 
-#### Back End
-Download Java JDK 22.
-If needed you might have to add a System variables for JAVA_HOME point to where you install your jdk_22.
+#### Back End 
+Download Java JDK 22 or Java.
+If needed, you might have to add a System variables for JAVA_HOME point to where you install your jdk_22 or java.
 The Maven 3.8.8 will read the pom.xml and should take care of the depencies of backend.
+Set up the back end application properties file. The values can be anything but be sure to match the values to front end and database.
+```
+spring.application.name=Booth
+spring.datasource.url= jdbc:postgresql://localhost:5432/dbspringbooth
+server.port=5001
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.datasource.username= db_user
+spring.datasource.password= usethesamepasswordasdb
+spring.jpa.hibernate.ddl-auto=update
+security.jwt.expiration-time = 1800000
+security.jwt.expiration-time-refresh = 2592000000
+#From base64encode.org
+security.jwt.secret-key = getarandomkeyfromanywherebutigotmindfrombase64encode
+```
 However for code editing, if you are using IntelliJ IDEA Community Edition 2024.1, intall Lombok plugins for easier code editing.
-To run you can just click the run button on IntelliJ or use the mvn run command:
+To run, open the application.java file and click the run button on IntelliJ or use the mvn run command:
 ```
 ./mvnw spring-boots:run
 ```
 
 #### Database (PostgreSQL)
 Download and run PostgreSQL.
-Run PostgreSQL SQL shell. Not that database name and owner(user) can be anything but must match back end application properties file.
+Run PostgreSQL SQL shell. Not that database name and owner(user) can be anything but must match the back end application properties file.
 ```
 create database dbspringbooth;
 \c dbspringbooth
@@ -104,12 +118,11 @@ grant all on  schema public to db_user;
 
 
 ### Resources
-I don't know Java before starting project. So 
 - [w3schools on JAVA](https://www.w3schools.com/java/)
 - [tutorials point on Spring Boot](https://www.tutorialspoint.com/spring_boot )
 - [w3schools on Spring Boot](https://www.w3schools.blog/spring-boot-tutorial )
 - [geeksforgeeks](https://www.geeksforgeeks.org/spring-boot/?ref=lbp)
-- [baeldung for Spring Boot](https://www.baeldung.com/ )
+- [baeldung for Spring Boot](https://www.baeldung.com/)
 - [Hibernate Doc for how to use hibernate in Java for database annotation](https://docs.jboss.org/hibernate/orm/6.4/introduction/html_single/Hibernate_Introduction.html)
 - [JWT tutorial code from Di Stephano](https://github.com/stefanoHTB/spring-security-jwt)
 
