@@ -1,5 +1,5 @@
 # GAproject4 Spring BOOTh
-GA Project 4 Spring BOOTh, an e-commerce app.
+GA Project 4 Spring BOOTh, an e-commerce fullstack app.
 
 
 ### Description
@@ -10,7 +10,12 @@ Users can then track the their orders in the store.
 
 ### Personal Notes 
 I haven't matched all end points for front end yet so back end waiting endpoints. And Back end definitely needs to refractor. 
-What I think I need to do:
+What I think I need to do: 
+- refractor cors from each local controller to webconfigurer for global cors.
+- add admin account
+- add cart for both front end and back end
+- add DTO for backend to sanitise data
+- and many more in icebox.
 I just wanted to learn Java and try making a backend server within 2 weeks. It was doable but the time constraint of 2 weeks was really REALLY tiring. I only knew some C++ before learning Java on 20/04/2024. 
 I couldn't have done it without the help of my course instructor and course teaching assistant.
 
@@ -46,7 +51,8 @@ I couldn't have done it without the help of my course instructor and course teac
 
 
 ### Getting Started
-[Wireframe proposal]()
+[Wireframe proposal](./ReadMePics/ProposedWireframe.png "Store Page as viewed by buyer.")
+[Entity Relationship Diagram](./ReadMePics/ERD.png "Store Page as viewed by buyer.")
 For public board see below in ice box.
 
 #### Front End
